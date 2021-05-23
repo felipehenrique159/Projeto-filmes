@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
-
+import './home.css'
 export default function Home() {
 
     const [filmes, setFilmes] = useState([])
@@ -18,12 +18,22 @@ export default function Home() {
         }
 
         getApiFilmes()
-        
+
      },[])
 
     return (
-        <div>
-            <h1>Pagina Home</h1>
+        <div className="container">
+            <div className="lista-filmes">
+                {filmes.map((filme)=>{
+                    return(
+                        <article key={filme.id}>
+                            <strong>{filme.nome}</strong>
+                            <img src={filme.foto} alt="capa filme" />
+                            <Link to="/">Acessar</Link>
+                        </article>
+                    )
+                })}
+            </div>
         </div>
 
     )
