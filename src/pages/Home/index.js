@@ -5,21 +5,25 @@ import './home.css'
 export default function Home() {
 
     const [filmes, setFilmes] = useState([])
+    const [loading,setLoading] = useState(true)
 
     const url = 'r-api/?api=filmes/'
 
    
     useEffect(()=>{
-
         async function getApiFilmes() {
             const res = await api.get(url)
             setFilmes(res.data)
-            console.log(res.data);
+            setLoading(false)
         }
-
         getApiFilmes()
-
      },[])
+
+     if(loading){
+        return(
+            <h1 className="filme-info">Carregando filmes...</h1>           
+        )
+    }
 
     return (
         <div className="container">
@@ -29,7 +33,7 @@ export default function Home() {
                         <article key={filme.id}>
                             <strong>{filme.nome}</strong>
                             <img src={filme.foto} alt="capa filme" />
-                            <Link to="/">Acessar</Link>
+                            <Link to={`/filme/${filme.id}`}>Acessar</Link>
                         </article>
                     )
                 })}
