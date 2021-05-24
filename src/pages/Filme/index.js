@@ -10,19 +10,15 @@ export default function Filme(){
     const [filme,setFilme] = useState([])
     const [loading,setLoading] = useState(true)
 
-    const url = `r-api/?api=filmes/${id}`
-
     useEffect(()=>{
         async function getFilme(){
-            const res = await api.get(url)
-            if(res.data.length == 0){
+            const res = await api.get(`r-api/?api=filmes/${id}`)
+            if(res.data.length === 0){
                 history.replace('/')
                 return
-            }
-            
+            }       
                 setFilme(res.data)
-                setLoading(false)
-            
+                setLoading(false)       
             }
         getFilme()
     },[history,id])
