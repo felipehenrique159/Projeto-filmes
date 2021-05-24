@@ -2,7 +2,7 @@ import {useParams,useHistory} from 'react-router-dom'
 import './filme.css'
 import api from '../../services/api'
 import { useEffect,useState } from 'react'
-
+import {FiStar} from 'react-icons/fi'
 export default function Filme(){
 
     const {id} = useParams()
@@ -39,6 +39,14 @@ export default function Filme(){
             <img src={filme.foto} alt="" />
             <h3>Sinopse</h3>
             <p>{filme.sinopse}</p>
+
+            <div className="botoes">
+                
+                <button onClick={()=>{}}> <span><FiStar/></span> Favoritar filme</button>
+                <button>
+                    <a target="blank" href={`https://youtube.com/results?search_query=${filme.nome} Trailer`}>Assistir Trailler</a>
+                </button>
+            </div>
         </div>
     )
 }
