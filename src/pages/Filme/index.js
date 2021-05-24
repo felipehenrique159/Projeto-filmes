@@ -3,6 +3,7 @@ import './filme.css'
 import api from '../../services/api'
 import { useEffect,useState } from 'react'
 import {FiStar} from 'react-icons/fi'
+import {toast} from 'react-toastify'
 export default function Filme(){
 
     const {id} = useParams()
@@ -31,14 +32,14 @@ export default function Filme(){
        const hasFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id)
 
         if(hasFilme){
-            alert('Você já possui esse filme salvo')
+            toast.error('Você já possui esse filme salvo')
             return;
         }
         
         filmesSalvos.push(filme)
 
         localStorage.setItem('filmes',JSON.stringify(filmesSalvos))
-        alert('Filme salvo com sucesso')
+        toast.success('Filme salvo com sucesso')
      }
 
     if(loading){
