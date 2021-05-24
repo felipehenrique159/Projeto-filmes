@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
 import './home.css'
+import Loader from '../../components/Loader'
+
 export default function Home() {
 
     const [filmes, setFilmes] = useState([])
@@ -21,7 +23,7 @@ export default function Home() {
 
      if(loading){
         return(
-            <h1 className="filme-info">Carregando filmes...</h1>           
+            <Loader/>           
         )
     }
 

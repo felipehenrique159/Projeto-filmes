@@ -4,6 +4,7 @@ import api from '../../services/api'
 import { useEffect,useState } from 'react'
 import {FiStar} from 'react-icons/fi'
 import {toast} from 'react-toastify'
+import Loader from '../../components/Loader'
 export default function Filme(){
 
     const {id} = useParams()
@@ -44,7 +45,7 @@ export default function Filme(){
 
     if(loading){
         return(
-            <h1 className="filme-info">Carregando seu filme...</h1>           
+            <Loader/> 
         )
     }
 
